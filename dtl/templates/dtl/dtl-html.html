@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Template Language Demo</title>
+</head>
+<body>
+    <h1>Django Template Language Demo</h1>
+    <h2>Welcome, {{ name }}</h2>
+    <div>Age: {{ age }}</div>
+    <!-- <div>{{ age }}</div> -->
+    <!-- <p>It is {{ is_female }} that {{ name }} is female.</p> -->
+    {% if is_female %}
+        <h4>{{ name }} is Female</h4>
+    {% else %}
+        <h4>{{ name }} is male</h4>
+    {% endif %}
+
+    <h2>Courses Instructed</h2>
+    <ol>
+
+        {% for course in courses_instructed %}
+            <li>{{ course }}</li>
+        {% endfor %}
+    </ol>
+
+    <div>
+        {% for cohort, no_of_students in cohorts.items %}
+        <p>{{ cohort }} -> {{ no_of_students }}</p>
+        {% endfor%}
+    </div>
+
+</body>
+</html>
