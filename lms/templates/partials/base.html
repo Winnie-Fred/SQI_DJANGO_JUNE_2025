@@ -10,6 +10,17 @@
     {% endblock extra_css %}
 </head>
 <body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'pages:home' %}">Home</a></li>
+                <li><a href="{% url 'pages:about_our_company' %}">About</a></li>
+                <li><a href="{% url 'pages:contact_info' %}">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
     {% block content %}
     {% endblock content %}
 
@@ -19,5 +30,6 @@
     {% block footer %}
     <footer>Copyright Django June 2025 Cohort SQI</footer>
     {% endblock footer %}
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>

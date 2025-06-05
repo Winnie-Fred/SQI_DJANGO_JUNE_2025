@@ -23,4 +23,5 @@ urlpatterns = [
     path('authors/', include('authors.urls')), 
     path('inheritance/', include('inheritance.urls')),
     path('', include('inheritance_correction.urls')),
+    path('pages/', include('pages.urls')),
 ]

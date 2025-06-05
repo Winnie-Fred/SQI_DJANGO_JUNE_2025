@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'library',
     'inheritance',
     'inheritance_correction',
+    'pages',
 ]
 
 MIDDLEWARE = [
