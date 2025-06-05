@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Home</title>
-</head>
-<body>
-    <h2 style="border: solid 3px rebeccapurple;">Library landing page</h2>
-</body>
-</html>
+{% extends "partials/base.html" %}
+
+{% block title %}
+Library Home
+{% endblock title %}
+
+
+{% block content %}
+{% include "partials/sidebar.html" %}
+<h2 style="border: solid 3px rebeccapurple;">Library landing page</h2>
+{% endblock content %}

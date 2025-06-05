@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('library/', include('library.urls')),
     path('authors/', include('authors.urls')), 
+    path('inheritance/', include('inheritance.urls')),
+    path('', include('inheritance_correction.urls')),
 ]

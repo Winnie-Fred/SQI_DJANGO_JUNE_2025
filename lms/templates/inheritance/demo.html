@@ -1,10 +1,10 @@
 {% extends "partials/base.html" %}
 
 {% block title %}
-List of Books
+Inheritance Demo
 {% endblock title %}
 
-
 {% block content %}
-<h2 style="border: solid 3px; text-align: center;">List of Books</h2>
+{% include "partials/sidebar.html" %}
+<h3>{{ topic }}</h3>
 {% endblock content %}
