@@ -1,0 +1,13 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Services Offered
+{% endblock title %}
+
+{% block body %}
+<ol>
+    {% for service in services %}
+        <li>{{ service }}</li>
+    {% endfor %}
+</ol>
+{% endblock body %}

@@ -1,0 +1,168 @@
+/* ---------- BASE.HTML STYLING ---------- */
+
+/* main.css - Styles for base.html of Winnie Bakes */
+
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #fff8f0;
+    color: #4a3f35;
+    padding: 0 20px;
+}
+
+/* Header and navigation */
+header {
+    background-color: #f4c095;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #4a3f35;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #7c4f30;
+    text-decoration: underline;
+}
+
+/* Main content block */
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Optional footer if added later */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    color: #7c4f30;
+    font-size: 0.9rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+}
+
+/* ---------- BASE.HTML STYLING ---------- */
+
+
+
+/* ---------- MENU PAGE STYLING ---------- */
+.menu-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fffaf4;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.menu-heading {
+    text-align: center;
+    font-size: 2rem;
+    color: #7c4f30;
+    margin-bottom: 30px;
+}
+
+.menu-item {
+    border-bottom: 1px solid #f2d3c1;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item-title {
+    font-size: 1.5rem;
+    color: #4a3f35;
+    margin-bottom: 5px;
+}
+
+.menu-item-price {
+    font-weight: bold;
+    color: #d17c4b;
+}
+
+.menu-item-description {
+    color: #5a4a42;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.menu-item-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    margin-top: 10px;
+    object-fit: cover;
+}
+
+/* Responsive Layout */
+@media (max-width: 600px) {
+    .menu-container {
+        padding: 10px;
+    }
+
+    .menu-heading {
+        font-size: 1.5rem;
+    }
+
+    .menu-item-title {
+        font-size: 1.25rem;
+    }
+
+    .menu-item-image {
+        max-width: 100%;
+    }
+}
+/* ---------- MENU PAGE STYLING ---------- */
+
+
+/* ---------- HOME PAGE STYLING ---------- */
+.signUpModal {
+    display: none;
+}
+.signUpModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff8f0;
+    padding: 30px;
+    border: 2px solid #f4c095;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    z-index: 1000;
+}
+/* ---------- HOME PAGE STYLING ---------- */

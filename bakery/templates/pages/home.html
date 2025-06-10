@@ -1,0 +1,15 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block content %}
+<h3>Welcome to Winnie Bakes Bakery</h3>
+<a href="#">Menu</a>
+
+<div class="signUpModal">
+    <h3>Sign Up to our Newsletter</h3>
+    <button type="button">Subscribe</button>
+    <button id="closeBtn" type="button">Close</button>
+</div>
+
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock content %}

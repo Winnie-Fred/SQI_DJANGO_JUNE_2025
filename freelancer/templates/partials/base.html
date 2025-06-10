@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio Website{% endblock title %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'portfolio:services' %}">Services</a></li>
+                <li><a href="{% url 'portfolio:testimonials' %}">Testimonials</a></li>
+                <li><a href="{% url 'portfolio:case_studies' %}">Case Studies</a></li>
+                <li><a href="{% url 'portfolio:blog' %}">Blog</a></li>
+                <li><a href="{% url 'portfolio:pricing' %}">Pricing</a></li>
+            </ul>
+        </nav>
+    </header>
+    {% block body %}
+    {% endblock body %}
+</body>
+</html>

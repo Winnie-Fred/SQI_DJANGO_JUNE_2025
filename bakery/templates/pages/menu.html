@@ -1,0 +1,21 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block title %}
+Menu
+{% endblock title %}
+
+{% block content %}
+<div class="menu-container">
+    <h3 class="menu-heading">Menu</h3>
+
+    {% for pastry, info in pastries.items %}
+        <div class="menu-item">
+            <h3 class="menu-item-title">{{ pastry }}</h3>
+            <p class="menu-item-price">{{ info.price }}</p>
+            <div class="menu-item-description">{{ info.description }}</div>
+            <img class="menu-item-image" src="{% static 'images' %}/{{ info.image_path }}" alt="{{ pastry }}">
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}

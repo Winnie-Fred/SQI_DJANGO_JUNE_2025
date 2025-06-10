@@ -1,0 +1,17 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Customer Testimonials
+{% endblock title %}
+
+{% block body %}
+
+
+<div>
+    {% for customer, testimonial in customer_testimonials.items %}
+        <h2>{{ customer }}</h2>
+        <p>{{ testimonial }}</p>
+    {% endfor %}
+</div>
+
+{% endblock body %}
