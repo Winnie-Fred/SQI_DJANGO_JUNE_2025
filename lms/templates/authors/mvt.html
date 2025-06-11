@@ -1,0 +1,43 @@
+{% extends "partials/base.html" %}
+
+{% block title %}MVT{% endblock title %}
+
+{% block content %}
+
+<h2>All Authors</h2>
+
+{% for author in all_authors %}
+<p>First Name: {{ author.first_name }}, Last Name: {{ author.last_name }}</p>
+{% endfor %}
+
+<h2>All Books</h2>
+
+{% for book in all_books %}
+<h3>{{ book.title }}</h3>
+<p>By {{ book.author }}</p>
+<p>Published On {{ book.published_on }}</p>
+<p>Number of Pages {{ book.number_of_pages }}</p>
+
+{% endfor %}
+
+
+<h2>Special Author</h2>
+<p>{{ special_author }}</p>
+
+<h2>Authors born before 2004</h2>
+
+{% for author in authors_born_before_2004 %}
+<p>{{ author }}</p>
+{% endfor %} 
+
+<h2>Authors and Their Books</h2>
+{% for author in all_authors %}
+    <h3>{{ author }}</h3>
+    <h4>Books</h4>
+    {% for book in author.books.all %}
+    {% comment %} {% for book in author.book_set.all %} {% endcomment %}
+        <p>{{ book }}</p>
+    {% endfor %}
+{% endfor %}
+
+{% endblock content %}

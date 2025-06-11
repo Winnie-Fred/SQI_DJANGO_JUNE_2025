@@ -1,0 +1,58 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+MVT demo
+{% endblock title %}
+
+{% block content %}
+<h1>Authors Ordered By Their Birth Date</h1>
+{% for author in authors %}
+    <h2>Author: </h2>
+        <h3>
+        FirstName:
+        </h3>
+        <p>{{ author.first_name }}</p>
+        <h3>
+        LastName:
+        </h3>
+        <p>{{ author.last_name }}</p>
+        <h3>
+        BirthDate:
+        </h3>
+        <p>{{ author.birth_date }}</p>
+{% endfor %}
+<h1>Authors Ordered By Default</h1>
+{% for author in default_order %}
+    <h2>Author: </h2>
+        <h3>
+        FirstName:
+        </h3>
+        <p>{{ author.first_name }}</p>
+        <h3>
+        LastName:
+        </h3>
+        <p>{{ author.last_name }}</p>
+        <h3>
+        BirthDate:
+        </h3>
+        <p>{{ author.birth_date }}</p>
+{% endfor %}
+
+<h1>All Books Ordered By Their Title in Descending Order</h1>
+{% for book in books %}
+<h3>Book:</h3>
+<p>{{ book.title }}</p>
+<p>By {{ book.author }}</p>
+<p>Published on {{ book.published_on }} and it has {{ book.number_of_pages }}</p>
+{% endfor %}
+
+<h1>Authors And Their Books</h1>
+{% for author in default_order %}
+
+    {% for book in author.books.all %}
+    <h3>{{ author }}</h3>
+    <p>{{ book }}</p>
+    {% endfor %}
+{% endfor %}
+
+{% endblock content %}
