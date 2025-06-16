@@ -1,0 +1,23 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Artists Page
+{% endblock title %}
+
+{% block content %}
+<h3>All Artists</h3>
+
+<ul>
+{% for artist in artists %}
+<li>{{ artist }}</li>
+    Albums by {{ artist }}
+    <ul>
+    {% for album in artist.albums.all %}
+        <li>{{ album.title }}</li>
+    {% endfor %}
+    </ul>
+
+{% endfor %}
+</ul>
+
+{% endblock content %}
