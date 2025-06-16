@@ -12,56 +12,19 @@ All Authors
 <div class="author-list">
     <h2>List of Authors</h2>
     <div class="authors">
-        <div class="author">William Shakespeare</div>
-        <div class="author">Jane Austen</div>
-        <div class="author">Mark Twain</div>
-        <div class="author">George Orwell</div>
-        <div class="author">J.K. Rowling</div>
-        <div class="author">Ernest Hemingway</div>
-        <div class="author">Charles Dickens</div>
-        <div class="author">Leo Tolstoy</div>
-        <div class="author">Fyodor Dostoevsky</div>
-        <div class="author">Emily Brontë</div>
-        <div class="author">Charlotte Brontë</div>
-        <div class="author">Agatha Christie</div>
-        <div class="author">J.R.R. Tolkien</div>
-        <div class="author">C.S. Lewis</div>
-        <div class="author">H.G. Wells</div>
-        <div class="author">Isaac Asimov</div>
-        <div class="author">Arthur Conan Doyle</div>
-        <div class="author">Virginia Woolf</div>
-        <div class="author">Oscar Wilde</div>
-        <div class="author">Toni Morrison</div>
-        <div class="author">Chinua Achebe</div>
-        <div class="author">Maya Angelou</div>
-        <div class="author">Gabriel García Márquez</div>
-        <div class="author">Haruki Murakami</div>
-        <div class="author">James Joyce</div>
-        <div class="author">Stephen King</div>
-        <div class="author">Kurt Vonnegut</div>
-        <div class="author">Philip K. Dick</div>
-        <div class="author">Franz Kafka</div>
-        <div class="author">Homer</div>
-        <div class="author">Dante Alighieri</div>
-        <div class="author">John Milton</div>
-        <div class="author">Herman Melville</div>
-        <div class="author">Edgar Allan Poe</div>
-        <div class="author">Nathaniel Hawthorne</div>
-        <div class="author">J.D. Salinger</div>
-        <div class="author">George R.R. Martin</div>
-        <div class="author">Suzanne Collins</div>
-        <div class="author">Margaret Atwood</div>
-        <div class="author">Ian McEwan</div>
-        <div class="author">Kazuo Ishiguro</div>
-        <div class="author">Zadie Smith</div>
-        <div class="author">T.S. Eliot</div>
-        <div class="author">Sylvia Plath</div>
-        <div class="author">Langston Hughes</div>
-        <div class="author">Alice Walker</div>
-        <div class="author">Nadine Gordimer</div>
-        <div class="author">Wole Soyinka</div>
-        <div class="author">Ralph Ellison</div>
-        <div class="author">Jhumpa Lahiri</div>
+    {% for author in authors %}
+    <div>
+        <div class="author">{{ author }}</div>
+        <h4>Birth Date: {{ author.birth_date }}</h4>
+        {% if author.image %}
+        <img src="{{ author.image.url }}" alt="{{ author }}'s Image">
+        {% else %}
+        <p>No image for {{ author }}</p>
+        {% endif %}
+    </div>
+
+    {% endfor %}
+        
     </div>
 </div>
 

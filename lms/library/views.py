@@ -7,7 +7,10 @@ def home(request):
     return render(request, "library/home.html")
 
 def book_list(request):
-    return render(request, "library/list-of-books.html")
+    context = {
+        'books': Book.objects.all()
+    }
+    return render(request, "library/list-of-books.html", context)
 
 def mvt(request):
     authors_ordered_by_birth_date = Author.objects.order_by("birth_date")

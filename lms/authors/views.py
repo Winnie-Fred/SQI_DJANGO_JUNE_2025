@@ -7,7 +7,10 @@ from datetime import datetime
 # Create your views here.
 
 def all_authors(request):
-    return render(request, "authors/authors.html")
+    context = {
+        'authors': Author.objects.all()
+    }
+    return render(request, "authors/authors.html", context)
 
 def book_signings(request):
     return render(request, "authors/book-signings.html")

@@ -7,4 +7,14 @@ List of Books
 
 {% block content %}
 <h2 style="border: solid 3px; text-align: center;">List of Books</h2>
+{% for book in books %}
+    <div>
+        <h3>{{ book.title }} by {{ book.author }}</h3>
+        <p>Published on: {{ book.published_on }}</p>
+        <p>{{ book.number_of_pages }} pages</p>
+
+        <img width="100", height="100", src="{{ book.cover_image.url }}" alt="{{ book.title }}'s Cover Image">
+
+    </div>
+{% endfor %}
 {% endblock content %}
