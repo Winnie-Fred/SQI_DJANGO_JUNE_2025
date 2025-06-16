@@ -9,13 +9,15 @@ Artists Page
 
 <ul>
 {% for artist in artists %}
-<li>{{ artist }}</li>
-    Albums by {{ artist }}
-    <ul>
-    {% for album in artist.albums.all %}
-        <li>{{ album.title }}</li>
-    {% endfor %}
-    </ul>
+    <img src="{{ artist.image.url }}" alt="{{ artist }} image" width="300" height="300">
+    <li>{{ artist }}</li>
+    <p>Debut Year: {{ artist.debut_year }}</p>
+        Albums by {{ artist }}
+        <ul>
+        {% for album in artist.albums.all %}
+            <li>{{ album.title }}</li>
+        {% endfor %}
+        </ul>
 
 {% endfor %}
 </ul>
