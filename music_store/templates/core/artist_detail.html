@@ -8,9 +8,12 @@ Artists Page
 <h3>All Artists</h3>
 
 <ul>
-{% for artist in artists %}
+{% if artist.image %}
     <img src="{{ artist.image.url }}" alt="{{ artist }} image" width="300" height="300">
-    <li><a href="{% url 'core:artist_detail' artist.pk %}">{{ artist }}</a></li>
+{% else %}
+    <p>No image</p>
+{% endif %}
+    <li>{{ artist }}</li>
     <p>Debut Year: {{ artist.debut_year }}</p>
         Albums by {{ artist }}
         <ul>
@@ -19,7 +22,6 @@ Artists Page
         {% endfor %}
         </ul>
 
-{% endfor %}
 </ul>
 
 {% endblock content %}

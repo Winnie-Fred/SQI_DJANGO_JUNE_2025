@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render , get_object_or_404
 
 from .models import Artist, Album
 
@@ -18,3 +18,8 @@ def albums(request):
         'albums': Album.objects.order_by('release_date'),
     }
     return render(request, "core/albums.html", context)
+
+def artist_detail(request, artist_pk):
+    artist = get_object_or_404(Artist, pk=artist_pk)
+    context = {"artist": artist}
+    return render(request, "core/artist_detail.html", context)
