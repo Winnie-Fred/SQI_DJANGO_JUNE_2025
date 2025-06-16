@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import Http404
 
 from .models import Author
 from library.models import Book
@@ -11,6 +12,17 @@ def all_authors(request):
         'authors': Author.objects.all()
     }
     return render(request, "authors/authors.html", context)
+
+def author_detail(request, author_pk):
+    # try:
+    #     author = Author.objects.get(pk=author_pk)
+    # except Author.DoesNotExist:
+    #     raise Http404("Author matching query does not exist")
+    
+    author = get_object_or_404(Author, pk=author_pk)
+
+    context = {"author": author}
+    return render(request, "authors/author-detail.html", context)
 
 def book_signings(request):
     return render(request, "authors/book-signings.html")

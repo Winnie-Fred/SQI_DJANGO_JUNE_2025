@@ -14,7 +14,7 @@ All Authors
     <div class="authors">
     {% for author in authors %}
     <div>
-        <div class="author">{{ author }}</div>
+        <div class="author"><a href="{% url 'authors:author_detail' author.pk %}">{{ author }}</a></div>
         <h4>Birth Date: {{ author.birth_date }}</h4>
         {% if author.image %}
         <img src="{{ author.image.url }}" alt="{{ author }}'s Image">

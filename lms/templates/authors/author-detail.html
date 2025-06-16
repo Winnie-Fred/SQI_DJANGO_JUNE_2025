@@ -1,0 +1,28 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block title %}
+{{ author.first_name }} {{ author.last_name }}
+{% endblock title %}
+
+{% block content %}
+<h2>{{ author.first_name }} {{ author.last_name }}</h2>
+
+<h3>Born on {{ author.birth_date }}</h3>
+
+{% if author.image %}
+    <img width="100" height="100" src="{{ author.image.url }}" alt="{{ author }}'s Image">
+{% else %}
+    <img width="100" height="100" src="{% static 'images/author-default.jpg' %}" alt="Default Author Image">
+{% endif %}
+
+{% endblock content %}
+
+
+{% block extra_content %}
+<p>Hello</p>
+{% endblock extra_content %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/authors.css' %}">
+{% endblock extra_css %}
