@@ -9,7 +9,7 @@ Albums Page
 
 <ul>
 {% for album in albums %}
-    <li>{{ album.title }} by {{ album.artist }}</li>
+    <li><a href="{% url 'core:album_detail' album.id %}">{{ album.title }} by {{ album.artist }}</a></li>
 
 {% endfor %}
 </ul>

@@ -23,3 +23,7 @@ def artist_detail(request, artist_pk):
     artist = get_object_or_404(Artist, pk=artist_pk)
     context = {"artist": artist}
     return render(request, "core/artist_detail.html", context)
+
+def album_detail(request, album_id):
+    album = get_object_or_404(Album, pk=album_id)
+    return render(request, "core/album_detail.html", {"album": album})
