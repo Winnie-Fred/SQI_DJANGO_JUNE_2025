@@ -1,0 +1,27 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block title %}
+Add Author
+{% endblock title %}
+
+{% block content %}
+<h2>Add Author</h2>
+
+<form enctype="multipart/form-data" action="{% url 'authors:create_author' %}" method="POST">
+    {% csrf_token %}
+    {{ create_author_form.as_p }}
+    <button type="submit">Add Author</button>
+</form>
+
+
+{% endblock content %}
+
+
+{% block extra_content %}
+<p>Hello</p>
+{% endblock extra_content %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/authors.css' %}">
+{% endblock extra_css %}

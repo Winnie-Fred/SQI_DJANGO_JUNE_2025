@@ -1,6 +1,8 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from authors.models import Author
 from .models import Book
+from .forms import BookCreateForm
+
 # Create your views here.
 
 def home(request):
@@ -23,3 +25,16 @@ def mvt(request):
         "default_order": all_authors,
     }
     return render(request, "library/mvt.html", context)
+
+
+def create_book(request):
+    form = BookCreateForm()
+    if request.method == "POST":
+        form = BookCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('library:book_list')
+    context = {
+        'form': form
+    }
+    return render(request, "library/create-book.html", context)

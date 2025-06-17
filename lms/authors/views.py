@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponse, redirect
 from django.http import Http404
 
 from .models import Author
+from .forms import AuthorCreateForm
 from library.models import Book
 from datetime import datetime
 
@@ -47,3 +48,29 @@ def mvt(request):
         "authors_born_before_2004": authors_born_before_2004,
     }
     return render(request, "authors/mvt.html", context)
+
+
+def greet_me(request):
+    return HttpResponse("Hello 👋")
+
+
+def greet_me_required(request, name):
+    return HttpResponse(f"Hello {name}👋")
+
+def greet_me_optional(request):
+    # print(request.GET)
+    name = request.GET.get("name", "Anonymous")
+    return HttpResponse(f"Hello {name}👋")
+
+def create_author(request):
+    author_create_form = AuthorCreateForm()
+    if request.method == "POST":
+        author_create_form = AuthorCreateForm(request.POST, request.FILES)
+        if author_create_form.is_valid():
+            author_create_form.save()
+            return redirect('authors:all_authors')
+    context = {
+        "create_author_form": author_create_form
+    }
+        
+    return render(request, "authors/create-author.html", context)
