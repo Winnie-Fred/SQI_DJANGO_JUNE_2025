@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     {% block extra_css %}
     {% endblock extra_css %}
+    <style>
+        ul.error-ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+            background-color: #ffe6e6;
+            border: 1px solid #ff9999;
+            border-radius: 4px;
+        }
+
+        li.error-li {
+            color: #cc0000;
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
 

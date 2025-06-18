@@ -1,7 +1,6 @@
-1. Create a view called `mvt` in the authors app.
-2. Create a template called `mvt.html` for this view
-3. In that template, display:
-a. All the Authors and their info ordered by their birthdate
-b. All the Authors in the default order
-c. All the books and their info ordered by their titles (descending order) 
-d. All the authors and their books beside the authors names
+1. Go to the music_store folder
+2. Create a django forms.Form for Album
+3. Create a template called create-album.html where you manually render the fields.
+MAKE SURE THE FIELDS ARE NOT CLEARED WHEN THERE IS AN ERROR
+MAKE SURE YOU DISPLAY ALL THE FIELD AND NON-FIELD ERRORS
+4. Style the form (optional)

@@ -1,0 +1,16 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Create Book
+{% endblock title %}
+
+
+{% block content %}
+<h2 style="border: solid 3px; text-align: center;">Add a New Book</h2>
+
+<form enctype="multipart/form-data" action="{% url 'library:create_book_no_model_form' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Book</button>
+</form>
+{% endblock content %}
