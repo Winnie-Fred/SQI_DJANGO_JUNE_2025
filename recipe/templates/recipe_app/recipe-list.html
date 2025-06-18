@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe List</title>
+</head>
+<body>
+    <div>
+    {% for recipe in recipes %}
+        <div>{{ recipe.name }}</div>
+        <div>{{ recipe.ingredients }}</div>
+        <div>{{ recipe.instructions }}</div>
+        <div>{{ recipe.cooking_time }}</div>
+
+        {% if recipe.image %}
+        <img src="{{ recipe.image.url }}" alt="Image of {{ recipe.name }}">
+        {% endif %}
+        {% if recipe.cover_image %}
+        <img src="{{ recipe.cover_image.url }}" alt="Cover Image of {{ recipe.name }}">
+        {% endif %}
+    {% endfor %}
+    </div>
+</body>
+</html>
