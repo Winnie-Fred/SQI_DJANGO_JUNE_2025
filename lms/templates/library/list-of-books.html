@@ -9,7 +9,7 @@ List of Books
 <h2 style="border: solid 3px; text-align: center;">List of Books</h2>
 {% for book in books %}
     <div>
-        <h3>{{ book.title }} by {{ book.author }}</h3>
+        <h3><a href="{% url 'library:book_detail' book.id %}">{{ book.title }} by {{ book.author }}</a></h3>
         <p>Published on: {{ book.published_on }}</p>
         <p>{{ book.number_of_pages }} pages</p>
 
