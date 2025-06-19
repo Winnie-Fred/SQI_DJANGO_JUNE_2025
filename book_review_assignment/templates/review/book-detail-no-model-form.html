@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+</head>
+<body>
+    <div>
+        <h3>{{ book.title }}</h3>
+        <p>By {{ book.author }}</p>
+        <p>Published on: {{ book.publication_date }}</p>
+    </div>
+    
+    <div>
+        {% for review in book.reviews.all %}
+            <div>
+                <div>{{ review.comment }}</div>
+                <div>{{ review.reviewer_name }}</div>
+                <div>{{ review.rating }}</div>
+                <div>Created at: {{ review.created_at }}</div>
+                <div>Updated at: {{ review.updated_at }}</div>
+            </div>
+        {% empty %}
+        <div>No reviews yet</div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <form action="{% url 'review:book_detail_no_model_form' book.id %}" method="POST">
+            {% csrf_token %}
+
+            {% if review_create_form.non_field_errors %}
+                <ul class="error-ul">
+                    {% for error in review_create_form.non_field_errors %}
+                        <li class="error-li">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <p>
+                {% if review_create_form.reviewer_name.errors %}
+                    <ul class="error-ul">
+                        {% for error in review_create_form.reviewer_name.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="reviewer_name">Reviewer Name:</label>
+                <input type="text" name="reviewer_name" value="{{ review_create_form.reviewer_name.value|default_if_none:'' }}">
+            </p>
+
+            <p>
+                {% if review_create_form.rating.errors %}
+                    <ul class="error-ul">
+                        {% for error in review_create_form.rating.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <p><small>{{ review_create_form.rating.help_text }}</small></p>
+                
+                <label for="rating">Rating:</label>
+                <input type="number" name="rating" value="{{ review_create_form.rating.value|default_if_none:'' }}">
+            </p>
+
+            <p>
+                {% if review_create_form.comment.errors %}
+                    <ul class="error-ul">
+                        {% for error in review_create_form.comment.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="comment">Comment:</label>
+                <textarea name="comment">{{ review_create_form.comment.value|default_if_none:'' }}</textarea>
+            </p>
+
+            <button type="submit">Leave Review</button>
+
+        </form>
+    </div>
+</body>
+</html>

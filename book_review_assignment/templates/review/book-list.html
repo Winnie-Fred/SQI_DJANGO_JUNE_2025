@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book List</title>
+</head>
+<body>
+    {% for book in books %}
+    <div>
+        {% comment %} <h3><a href="{% url 'review:book_detail' book.pk %}">{{ book.title }}</a></h3> {% endcomment %}
+        <h3><a href="{% url 'review:book_detail_no_model_form' book.pk %}">{{ book.title }}</a></h3>
+    </div>
+    {% endfor %}
+</body>
+</html>
