@@ -6,6 +6,7 @@ app_name = 'review'
 
 urlpatterns = [
     path('', views.book_list, name='book_list'),
-    path('book/<int:book_pk>', views.book_detail, name='book_detail'),
-    path('book/no-model-form/<int:book_id>', views.book_detail_no_model_form, name='book_detail_no_model_form'),
+    path('book/<int:book_pk>/', views.book_detail, name='book_detail'),
+    path('book/no-model-form/<int:book_id>/', views.book_detail_no_model_form, name='book_detail_no_model_form'),
+    path('edit/review/<int:review_id>/', views.edit_review, name='edit_review'),
 ]

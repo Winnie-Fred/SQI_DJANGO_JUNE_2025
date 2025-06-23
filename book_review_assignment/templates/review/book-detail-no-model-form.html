@@ -20,6 +20,7 @@
                 <div>{{ review.rating }}</div>
                 <div>Created at: {{ review.created_at }}</div>
                 <div>Updated at: {{ review.updated_at }}</div>
+                <a href="{% url 'review:edit_review' review.pk %}">Edit</a>
             </div>
         {% empty %}
         <div>No reviews yet</div>

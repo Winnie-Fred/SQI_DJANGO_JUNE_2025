@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+</head>
+<body>
+    <div>
+        <form action="{% url 'review:edit_review' review.id %}" method="POST">
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <ul class="error-ul">
+                    {% for error in form.non_field_errors %}
+                        <li class="error-li">{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <p>
+                {% if form.rating.errors %}
+                    <ul class="error-ul">
+                        {% for error in form.rating.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <p><small>{{ form.rating.help_text }}</small></p>
+                
+                <label for="rating">Rating:</label>
+                <input type="number" name="rating" value="{{ form.rating.value|default_if_none:'' }}">
+            </p>
+
+            <p>
+                {% if form.comment.errors %}
+                    <ul class="error-ul">
+                        {% for error in form.comment.errors %}
+                            <li class="error-li">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+                <label for="comment">Comment:</label>
+                <textarea name="comment">{{ form.comment.value|default_if_none:'' }}</textarea>
+            </p>
+
+            <button type="submit">Leave Review</button>
+
+        </form>
+    </div>
+</body>
+</html>
