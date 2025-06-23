@@ -1,0 +1,39 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Notes
+{% endblock title %}
+
+{% block body %}
+{% comment %} <div>
+    <form method="GET" action="{% url 'core:notes' %}">
+        <select name="category" class="note-form-select">
+        {% for value, option in filter_form.category.field.choices %}
+                <option value="{{ value }}">{{ option }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+</div> {% endcomment %}
+
+<div>
+    {% for value, option in category_choices %}
+        <a href="{% url 'core:notes' %}?category={{ value }}">{{ option }}</a>
+    {% endfor %} 
+</div>
+
+<div>
+    <form action="{% url 'core:notes' %}">
+        <input type="text" name="query">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div>
+    {% for note in notes %}
+        <h3><a href="{% url 'core:note_detail' note.pk %}">{{ note.title }}</a></h3>
+    {% empty %}
+    <p>No notes added yet</p>
+    {% endfor %}
+</div>
+{% endblock body %}

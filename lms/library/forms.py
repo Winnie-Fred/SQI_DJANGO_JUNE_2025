@@ -13,5 +13,5 @@ class BookNotModelForm(forms.Form):
     title = forms.CharField(max_length=255)
     author = forms.ModelChoiceField(queryset=Author.objects.all())
     number_of_pages = forms.IntegerField()
-    published_on = forms.DateField()
+    published_on = forms.DateField(widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}))
     cover_image = forms.ImageField(required=False)

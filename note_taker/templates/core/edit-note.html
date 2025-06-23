@@ -1,0 +1,17 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Edit Note
+{% endblock title %}
+
+{% block body %}
+<div class="note-form-container">
+    <h2 class="note-form-header">Edit Note</h2>
+    <form action="{% url 'core:edit_note' note.id %}" method="POST" class="note-form">
+
+        {% include "partials/note-form.html" %}
+
+        <button type="submit" class="note-form-button">Edit Note</button>
+    </form>
+</div>
+{% endblock body %}

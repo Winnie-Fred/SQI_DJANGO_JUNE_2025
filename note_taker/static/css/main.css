@@ -1,0 +1,74 @@
+.note-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.note-form-header {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #333;
+}
+
+.note-form-group {
+  margin-bottom: 20px;
+}
+
+.note-form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+}
+
+.note-form-input,
+.note-form-select,
+.note-form-textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s, box-shadow 0.3s;
+  background-color: #f9f9f9;
+}
+
+.note-form-input:focus,
+.note-form-select:focus,
+.note-form-textarea:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.note-form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.note-form-button {
+  width: 100%;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #007BFF, #00C6FF);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.note-form-button:hover {
+  background: linear-gradient(135deg, #0056b3, #0099cc);
+}
+
+.note-form-error {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+}

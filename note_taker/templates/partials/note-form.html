@@ -1,0 +1,37 @@
+{% csrf_token %}
+
+{% if form.non_field_errors %}
+    <div class="note-form-error">
+        {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>    
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="note-form-group">
+    <label for="title" class="note-form-label">Title</label>
+    <input type="text" name='title' class="note-form-input" value="{{ form.title.value|default_if_none:'' }}" required>
+    {% for error in form.title.errors %}
+        <div class="note-form-error">{{ error }}</div>
+    {% endfor %}
+</div>
+
+<div class="note-form-group">
+    <label for="category" class="note-form-label">Category</label>
+    <select name="category" class="note-form-select" required>
+        {% for value, option in form.category.field.choices %}
+            <option value="{{ value }}">{{ option }}</option>
+        {% endfor %}
+    </select>
+    {% for error in form.category.errors %}
+        <div class="note-form-error">{{ error }}</div>
+    {% endfor %}
+</div>
+
+<div class="note-form-group">
+    <label for="content" class="note-form-label">Content</label>
+    <textarea name="content" class="note-form-textarea">{{ form.content.value|default_if_none:'' }}</textarea>
+    {% for error in form.content.errors %}
+        <div class="note-form-error">{{ error }}</div>
+    {% endfor %}
+</div>

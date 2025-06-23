@@ -1,0 +1,18 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Edit Note
+{% endblock title %}
+
+{% block body %}
+<div>
+    <h3>{{ note.title }}</h3>
+    <div>{{ note.content }}</div>
+    <div>{{ note.get_category_display }}</div>
+    <p>Created at: {{ note.created_at }}</p>
+</div>
+<div>
+    <a href="{% url 'core:edit_note' note.pk %}">Edit</a>
+    <a href="{% url 'core:confirm_delete' note.pk %}">Delete</a>
+</div>
+{% endblock body %}

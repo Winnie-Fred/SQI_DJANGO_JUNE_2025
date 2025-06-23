@@ -1,0 +1,22 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Create Note
+{% endblock title %}
+
+{% block body %}
+<div>
+    <h3>Are you sure you want to delete {{ note.title }}?</h3>
+    <div>Content: {{ note.content }}</div>
+    <div>Category: {{ note.get_category_display }}</div>
+    <p>Created at: {{ note.created_at }}</p> 
+</div>
+
+<div>
+    <form action="{% url 'core:delete_note' note.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, I'm sure</button>
+    </form>
+    <a href="{% url 'core:note_detail' note.pk %}">No, take me back</a>
+</div>
+{% endblock body %}
