@@ -5,8 +5,7 @@ from .models import Note, Category
 class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
-        fields = "__all__"
-
+        exclude = ["added_by"]
 
 class FilterForm(forms.Form):
     category = forms.ChoiceField(choices=Category.choices, required=False)

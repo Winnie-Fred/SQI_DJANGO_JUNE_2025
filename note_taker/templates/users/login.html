@@ -1,0 +1,17 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Log In
+{% endblock title %}
+
+{% block body %}
+<div class="note-form-container">
+    <h2 class="note-form-header">Log In</h2>
+    <form action="{% url 'users:login' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Don't have an account? <a href="{% url 'users:sign_up' %}">Sign Up</a></p>
+        <button type="submit">Log In</button>
+    </form>
+</div>
+{% endblock body %}

@@ -72,3 +72,47 @@
   font-size: 14px;
   margin-top: 5px;
 }
+
+
+.message-ul {
+    list-style: none;
+    padding: 0;
+    margin: 1em 0;
+}
+
+.message-li {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.message-li.success {
+    background-color: #28a745; /* Green */
+}
+
+.message-li.error {
+    background-color: #dc3545; /* Red */
+}
+
+.message-li.warning {
+    background-color: #ffc107; /* Yellow */
+    color: #333;  /* darker text for readability */
+}
+
+.message-li.info {
+    background-color: #17a2b8; /* Blue */
+}
+
+.message-li.debug {
+    background-color: #6c757d; /* Grey */
+}
+
+
+.message-li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}

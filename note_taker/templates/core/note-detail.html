@@ -10,6 +10,7 @@ Edit Note
     <div>{{ note.content }}</div>
     <div>{{ note.get_category_display }}</div>
     <p>Created at: {{ note.created_at }}</p>
+    <p>Added by: {{ note.added_by }}</p>
 </div>
 <div>
     <a href="{% url 'core:edit_note' note.pk %}">Edit</a>

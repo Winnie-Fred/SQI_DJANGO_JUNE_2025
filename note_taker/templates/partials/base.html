@@ -12,12 +12,31 @@
     <header>
         <nav>
             <ul>
+                {% if request.user.is_authenticated %}
+                    <form action="{% url 'users:log_out' %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit">Log Out</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'users:login' %}">Log In</a>
+                {% endif %}
                 <li><a href="{% url 'core:notes' %}">View Notes</a></li>
                 <li><a href="{% url 'core:create_note' %}">Create Note</a></li>
             </ul>
         </nav>
     </header>
+   
     <div>
+
+
+    {% if messages %}
+        <ul class="message-ul">
+            {% for message in messages %}
+                <li class="message-li {{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
     {% block body %}
     {% endblock body %}
     </div>
