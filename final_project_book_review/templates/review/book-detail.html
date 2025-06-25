@@ -1,0 +1,141 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% load extras %}
+
+{% block title %}
+{{ book.title }} - BookReview
+{% endblock title %}
+
+
+{% block content %}
+<main class="book-detail-page">
+    <div class="container">
+        <div class="book-detail-header">
+            <div class="book-cover-large">
+                {% if book.cover_image %}
+                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+                {% else %}
+                <p>No Image for {{ book.title }}</p>
+                {% endif %}
+            </div>
+            <div class="book-info-detailed">
+                <h1>{{ book.title }}</h1>
+                <p class="author">by {{ book.author }}</p>
+                <div class="book-meta">
+                    <span class="genre">{{ book.get_genre_display }}</span>
+                    <span class="publication">Published: {{ book.publication_date }}</span>
+                    <span class="pages">{{ book.number_of_pages }} pages</span>
+                </div>
+                <div class="rating-summary">
+                    <div class="rating-large">
+                        <i class="fas fa-star"></i>
+                        <span class="rating-value">{{ book.calculate_avg_rating }}</span>
+                    </div>
+                    <div class="rating-details">
+                        <p>{{ book.review_set.count }} reviews</p>
+                        <div class="rating-breakdown">
+                        {% for rating, distribution in book.get_rating_distribution.items %}
+                            <div class="rating-bar">
+                                <span>{{ rating }} stars</span>
+                                <div class="bar"><div class="fill" style="width: {{ distribution }}%"></div></div>
+                                <span>{{ distribution }}%</span>
+                            </div>
+                        {% endfor %}
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="book-description">
+                    <h3>About {{ book.author }}</h3>
+                    <p>{{ book.author.bio }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="reviews-section">
+            <div class="reviews-header">
+                <h2>Reviews</h2>
+                <button class="btn btn-primary write-review-btn">Write a Review</button>
+            </div>
+
+            <div class="review-filters">
+                <select class="filter-select">
+                    <option value="">All Reviews</option>
+                    <option value="recent">Most Recent</option>
+                    <option value="helpful">Most Helpful</option>
+                    <option value="highest">Highest Rated</option>
+                    <option value="lowest">Lowest Rated</option>
+                </select>
+            </div>
+
+            <div class="reviews-list">
+            {% for review in book.review_set.all %}
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <div class="reviewer-avatar">
+                                <img src="{% static 'images/default-reviewer-image.jpg' %}" alt="{{ review.added_by.first_name }} {{ review.added_by.last_name }}">
+                            </div>
+                            <div class="reviewer-details">
+                                <h4>{{ review.added_by.first_name }} {{ review.added_by.last_name }}</h4>
+                                <p class="review-date">{{ review.added_since }} days ago</p>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            {% for i in review.rating|times %}
+                                <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>{{ review.comment }}</p>
+                    </div>
+                    <div class="review-actions">
+                        <button class="action-btn"><i class="fas fa-thumbs-up"></i> Helpful (23)</button>
+                        <button class="action-btn"><i class="fas fa-reply"></i> Reply</button>
+                    </div>
+                </div>
+            {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- Write Review Modal -->
+<div class="modal" id="writeReviewModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Write a Review</h3>
+            <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form class="review-form">
+                <div class="form-group">
+                    <label>Your Rating</label>
+                    <div class="star-rating">
+                        <i class="far fa-star" data-rating="1"></i>
+                        <i class="far fa-star" data-rating="2"></i>
+                        <i class="far fa-star" data-rating="3"></i>
+                        <i class="far fa-star" data-rating="4"></i>
+                        <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="reviewTitle">Review Title</label>
+                    <input type="text" id="reviewTitle" placeholder="Give your review a title">
+                </div>
+                <div class="form-group">
+                    <label for="reviewContent">Your Review</label>
+                    <textarea id="reviewContent" rows="5" placeholder="Share your thoughts about this book..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

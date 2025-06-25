@@ -1,0 +1,111 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+<header class="hero">
+    <div class="hero-content">
+        <h1>Discover Your Next Great Read</h1>
+        <p>Join thousands of book lovers sharing their thoughts and discovering amazing books through authentic reviews.</p>
+        <div class="hero-buttons">
+            <a href="books.html" class="btn btn-primary">Browse Books</a>
+            <a href="register.html" class="btn btn-secondary">Join Community</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <div class="floating-books">
+            <div class="book book-1"></div>
+            <div class="book book-2"></div>
+            <div class="book book-3"></div>
+        </div>
+    </div>
+</header>
+
+<section class="features">
+    <div class="container">
+        <h2>Why Choose BookReview?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Honest Reviews</h3>
+                <p>Read authentic reviews from real readers to make informed decisions about your next book.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Active Community</h3>
+                <p>Connect with fellow book enthusiasts and discover books through community recommendations.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Easy Discovery</h3>
+                <p>Find your perfect book with our intuitive search and filtering system.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="popular-books">
+    <div class="container">
+        <h2>Popular This Week</h2>
+        <div class="books-grid">
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="assets/images/book1.jpg" alt="The Silent Patient">
+                </div>
+                <div class="book-info">
+                    <h3>The Silent Patient</h3>
+                    <p class="author">Alex Michaelides</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <span>4.2</span>
+                        <span class="review-count">(1,234 reviews)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="assets/images/book2.jpg" alt="Where the Crawdads Sing">
+                </div>
+                <div class="book-info">
+                    <h3>Where the Crawdads Sing</h3>
+                    <p class="author">Delia Owens</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <span>4.5</span>
+                        <span class="review-count">(2,891 reviews)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="book-cover">
+                    <img src="assets/images/book3.jpg" alt="Atomic Habits">
+                </div>
+                <div class="book-info">
+                    <h3>Atomic Habits</h3>
+                    <p class="author">James Clear</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <span>4.7</span>
+                        <span class="review-count">(3,456 reviews)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <a href="books.html" class="btn btn-primary">View All Books</a>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
+
+
+

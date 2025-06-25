@@ -1,0 +1,87 @@
+{% extends "partials/base.html" %}
+
+
+{% block title %}
+All Books
+{% endblock title %}
+
+
+{% block content %}
+<main class="books-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>Discover Books</h1>
+            <p>Explore our collection of books and read authentic reviews from our community</p>
+        </div>
+
+        <div class="search-filters">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search books, authors, or genres...">
+            </div>
+            <div class="filters">
+                <select class="filter-select">
+                    <option value="">All Genres</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="non-fiction">Non-Fiction</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="romance">Romance</option>
+                    <option value="sci-fi">Science Fiction</option>
+                    <option value="fantasy">Fantasy</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">Sort by</option>
+                    <option value="rating">Highest Rated</option>
+                    <option value="reviews">Most Reviewed</option>
+                    <option value="newest">Newest</option>
+                    <option value="title">Title A-Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="books-grid">
+
+        {% for book in all_books %}
+            <div class="book-card">
+                <div class="book-cover">
+                {% if book.cover_image %}
+                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+                {% else %}
+                <p>No Image for {{ book.title }}</p>
+                {% endif %}
+                </div>
+                <div class="book-info">
+                    <h3>{{ book.title }}</h3>
+                    <p class="author">{{ book.author }}</p>
+                    <p class="genre">{{ book.get_genre_display }}</p>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <span>{{ book.calculate_avg_rating }}</span>
+                        <span class="review-count">({{ book.review_set.count }} reviews)</span>
+                    </div>
+                    <a href="{% url 'review:book_detail' book.pk %}" class="btn btn-outline">Read Reviews</a>
+                </div>
+            </div>
+        {% endfor %}
+
+            
+        </div>
+
+        <div class="pagination">
+            <button class="btn btn-outline">Previous</button>
+            <span class="page-numbers">
+                <span class="page-number active">1</span>
+                <span class="page-number">2</span>
+                <span class="page-number">3</span>
+                <span class="page-number">...</span>
+                <span class="page-number">10</span>
+            </span>
+            <button class="btn btn-outline">Next</button>
+        </div>
+    </div>
+</main>
+{% endblock content %}
+
+   
+</body>
+</html>
