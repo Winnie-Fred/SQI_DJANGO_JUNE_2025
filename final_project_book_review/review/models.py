@@ -53,6 +53,7 @@ class Book(models.Model):
     cover_image = models.ImageField(upload_to=book_cover_upload_to, default="default-cover.jpg")
     isbn = models.CharField(max_length=15)
     number_of_pages = models.PositiveIntegerField()
+    is_featured = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.title} by {self.author}"

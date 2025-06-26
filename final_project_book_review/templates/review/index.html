@@ -10,7 +10,7 @@ Home
         <h1>Discover Your Next Great Read</h1>
         <p>Join thousands of book lovers sharing their thoughts and discovering amazing books through authentic reviews.</p>
         <div class="hero-buttons">
-            <a href="books.html" class="btn btn-primary">Browse Books</a>
+            <a href="{% url 'review:book_list' %}" class="btn btn-primary">Browse Books</a>
             <a href="register.html" class="btn btn-secondary">Join Community</a>
         </div>
     </div>
@@ -54,53 +54,33 @@ Home
 
 <section class="popular-books">
     <div class="container">
-        <h2>Popular This Week</h2>
+        <h2>Featured This Week</h2>
         <div class="books-grid">
+        {% for book in featured %}
             <div class="book-card">
                 <div class="book-cover">
-                    <img src="assets/images/book1.jpg" alt="The Silent Patient">
+                {% if book.cover_image %}
+                    <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+                {% else %}
+                <p>No Image for {{ book.title }}</p>
+                {% endif %}
                 </div>
                 <div class="book-info">
-                    <h3>The Silent Patient</h3>
-                    <p class="author">Alex Michaelides</p>
+                    <h3>{{ book.title }}</h3>
+                    <p class="author">{{ book.author }}</p>
+                    <p class="genre">{{ book.get_genre_display }}</p>
                     <div class="rating">
                         <i class="fas fa-star"></i>
-                        <span>4.2</span>
-                        <span class="review-count">(1,234 reviews)</span>
+                        <span>{{ book.calculate_avg_rating }}</span>
+                        <span class="review-count">({{ book.review_set.count }} reviews)</span>
                     </div>
+                    <a href="{% url 'review:book_detail' book.pk %}" class="btn btn-outline">Read Reviews</a>
                 </div>
             </div>
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="assets/images/book2.jpg" alt="Where the Crawdads Sing">
-                </div>
-                <div class="book-info">
-                    <h3>Where the Crawdads Sing</h3>
-                    <p class="author">Delia Owens</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <span>4.5</span>
-                        <span class="review-count">(2,891 reviews)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="assets/images/book3.jpg" alt="Atomic Habits">
-                </div>
-                <div class="book-info">
-                    <h3>Atomic Habits</h3>
-                    <p class="author">James Clear</p>
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <span>4.7</span>
-                        <span class="review-count">(3,456 reviews)</span>
-                    </div>
-                </div>
-            </div>
+        {% endfor %}
         </div>
         <div class="text-center">
-            <a href="books.html" class="btn btn-primary">View All Books</a>
+            <a href="{% url 'review:book_list' %}" class="btn btn-primary">View All Books</a>
         </div>
     </div>
 </section>

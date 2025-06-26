@@ -1,0 +1,43 @@
+{% extends "partials/base.html" %}
+{% load static %}
+{% load extras %}
+
+{% block title %}
+Confirm Delete of Review on {{ review.book.title }}
+{% endblock title %}
+
+
+{% block content %}
+<main class="book-detail-page">
+    <div class="container">
+        <div>Are you sure you want to delete your review?</div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">
+                            <img src="{% static 'images/default-reviewer-image.jpg' %}" alt="{{ review.added_by.first_name }} {{ review.added_by.last_name }}">
+                        </div>
+                        <div class="reviewer-details">
+                            <h4>{{ review.added_by.first_name }} {{ review.added_by.last_name }}</h4>
+                            <p class="review-date">{{ review.added_since }} days ago</p>
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        {% for i in review.rating|times %}
+                            <i class="fas fa-star"></i>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>{{ review.comment }}</p>
+                </div>
+                <div class="confirm-delete-actions">
+                    <form action="{% url 'review:delete_review' review.id %}" method="POST" class="delete-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Yes I'm sure</button>
+                    </form>
+                    <a href="{% url 'review:book_detail' review.book.pk %}" class="btn btn-outline">No, take me back</a>                </div>
+                </div>
+        </div>
+    </main>
+{% endblock content %}
