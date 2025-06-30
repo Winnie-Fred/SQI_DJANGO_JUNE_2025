@@ -55,7 +55,8 @@
         <div class="reviews-section">
             <div class="reviews-header">
                 <h2>Reviews</h2>
-                <button class="btn btn-primary write-review-btn">Write a Review</button>
+                <button class="btn btn-primary write-review-btn {% if not request.user.is_authenticated %}disabled{% endif %}" {% if not request.user.is_authenticated %}disabled{% endif %}>Write a Review</button>
+
             </div>
 
             <div class="review-filters">
@@ -91,8 +92,10 @@
                         <p>{{ review.comment }}</p>
                     </div>
                         <div class="review-actions">
-                            <a href="{% url 'review:edit_review' review.id %}" class="action-btn edit-btn"><i class="fas fa-edit"></i> Edit</a>
-                            <a href="{% url 'review:confirm_delete' review.id %}" class="action-btn delete-btn"><i class="fas fa-trash"></i> Delete</a>
+                            <button class="action-btn edit-btn {% if request.user != review.added_by %}disabled{% endif %}" onclick="window.location.href='{% url 'review:edit_review' review.id %}'" {% if request.user != review.added_by %}disabled{% endif %}><i class="fas fa-edit"></i> Edit</button>
+                            <button class="action-btn delete-btn {% if request.user != review.added_by %}disabled{% endif %}" onclick="window.location.href='{% url 'review:confirm_delete' review.id %}'" {% if request.user != review.added_by %}disabled{% endif %}><i class="fas fa-trash"></i> Delete</button>
+                            {% comment %} <a href="{% url 'review:edit_review' review.id %}" class="action-btn edit-btn"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="{% url 'review:confirm_delete' review.id %}" class="action-btn delete-btn"><i class="fas fa-trash"></i> Delete</a> {% endcomment %}
                         </div>
                 </div>
             {% endfor %}
@@ -105,7 +108,7 @@
 
 <!-- Write Review Modal -->
 <div class="modal" id="writeReviewModal">
-    <div class="modal-content">
+    <div class="modal-content">        
         <div class="modal-header">
             <h3>Write a Review</h3>
             <button class="close-modal">&times;</button>

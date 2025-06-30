@@ -105,3 +105,9 @@ class Review(models.Model):
         days_since_added = today - self.added_on
         days_since_added = days_since_added.days
         return days_since_added
+    
+    def can_still_edit(self):
+        today = timezone.now()
+        five_minutes = timezone.timedelta(minutes=5)
+        return today - self.added_on <= five_minutes
+            

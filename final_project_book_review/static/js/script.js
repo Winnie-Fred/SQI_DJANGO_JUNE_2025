@@ -169,67 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
         strengthText.textContent = labels[strength - 1] || 'Very Weak';
     }
 
-    // Form validation
-    const authForms = document.querySelectorAll('.auth-form');
-    authForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Basic validation
-            if (!validateForm(data)) {
-                return;
-            }
-
-            // Show loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            if (submitBtn) {
-                submitBtn.innerHTML = '<span class="spinner"></span> Processing...';
-                submitBtn.disabled = true;
-            }
-
-            // Simulate form submission
-            setTimeout(() => {
-                alert('Form submitted successfully! (This is a demo)');
-                if (submitBtn) {
-                    submitBtn.innerHTML = submitBtn.dataset.originalText || 'Submit';
-                    submitBtn.disabled = false;
-                }
-            }, 2000);
-        });
-    });
-
-    function validateForm(data) {
-        let isValid = true;
-
-        // Email validation
-        if (data.email && !isValidEmail(data.email)) {
-            showError('Please enter a valid email address');
-            isValid = false;
-        }
-
-        // Password confirmation
-        if (data.password && data.confirmPassword && data.password !== data.confirmPassword) {
-            showError('Passwords do not match');
-            isValid = false;
-        }
-
-        // Terms acceptance for registration
-        if (data.terms !== undefined && !data.terms) {
-            showError('Please accept the terms and conditions');
-            isValid = false;
-        }
-
-        return isValid;
-    }
-
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    }
-
+    
     function showError(message) {
         // Create or update error message
         let errorDiv = document.querySelector('.error-message');

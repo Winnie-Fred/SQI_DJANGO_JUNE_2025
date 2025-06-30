@@ -11,19 +11,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <i class="fas fa-book-open"></i>
                 <span>BookReview</span>
+                
             </div>
+
+            {% if request.user.is_authenticated %}
+            <div class="nav-user">
+                <i class="avatar-icon fas fa-user-circle"></i>
+                <span>{{ request.user.username }}</span>
+            </div>
+            {% endif %}
+
             <ul class="nav-menu">
                 {% url 'review:home' as home_url %}
                 <li><a href="{% url 'review:home' %}" class="nav-link {% if request.path == home_url %}active{% endif %}">Home</a></li>
                 {% url 'review:book_list' as book_list_url %}
                 <li><a href="{% url 'review:book_list' %}" class="nav-link {% if request.path == book_list_url %}active{% endif %}">Books</a></li>
-                <li><a href="login.html" class="nav-link">Login</a></li>
-                <li><a href="register.html" class="nav-link signup-btn">Sign Up</a></li>
+                
+            
+                {% if request.user.is_authenticated %}
+                    <form action="{% url 'users:logout' %}" method="POST">
+                        {% csrf_token %}
+                        <button class="signup-btn" type="submit">Log Out</button>
+                    </form>
+                
+                {% else %}
+                    {% url 'users:login' as login_url %}
+                    <li><a href="{% url 'users:login' %}" class="nav-link {% if request.path == login_url %}active{% endif %}">Log In</a></li>
+
+                {% endif %}
+                
+                
+                <li><a href="{% url 'users:register' %}" class="nav-link signup-btn">Sign Up</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -33,6 +58,14 @@
         </div>
     </nav>
 
+
+    {% if messages %}
+        <ul class="message-ul">
+            {% for message in messages %}
+                <li class="message-li {{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     {% block content %}
     
     {% endblock content %}
